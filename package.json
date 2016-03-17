@@ -1,0 +1,24 @@
+{
+  "name": "ardesia",
+  "version": "0.0.0",
+  "description": "awesome reusable react components",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/inkOfPixel/ardesia.git"
+  },
+  "keywords": [
+    "react",
+    "components",
+    "ui"
+  ],
+  "author": "Massimo De Marchi <massimo@inkofpixel.com> (http://inkofpixel.com)",
+  "license": "SEE LICENSE IN <LICENSE>",
+  "bugs": {
+    "url": "https://github.com/inkOfPixel/ardesia/issues"
+  },
+  "homepage": "https://github.com/inkOfPixel/ardesia#readme"
+}

@@ -4,7 +4,6 @@
 */
 
 import React from "react";
-import { render } from "react-dom";
 import { TextField } from "./components";
 
 const App = ({ }) => (
@@ -16,5 +15,4 @@ const App = ({ }) => (
 	</div>
 );
 
-const appContainer = document.getElementById("app");
-render(<App />, appContainer);
+export default App;

@@ -4,7 +4,7 @@ const webpack = require("webpack");
 
 module.exports = {
 	entry: {
-		bundle: ["./source/App.jsx"]
+		bundle: ["./source/main.js"]
 	},
 	output: {
 		path: path.resolve(__dirname, "build"),

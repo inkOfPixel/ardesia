@@ -9,6 +9,7 @@ const gutil = require("gulp-util");
 const webpack = require("webpack");
 const WebpackDevServer = require("webpack-dev-server");
 const devConfiguration = require("./config/webpack.config.dev");
+const libConfiguration = require("./config/webpack.config");
 
 const DEV_SERVER_PORT = 9000;
 const AGGREGATE_CLIENT_TIMEOUT = 300;
@@ -79,6 +80,11 @@ gulp.task("webpack-dev-server", function runServer() {
 gulp.task("build", function buildClient(callback) {
 	const compiler = webpack(devConfiguration);
 	compiler.run(onBuild("[webpack | build]", callback));
+});
+
+gulp.task("build-lib", function buildClient(callback) {
+	const compiler = webpack(libConfiguration);
+	compiler.run(onBuild("[webpack | build-lib]", callback));
 });
 
 function onBuild(moduleName, done) {

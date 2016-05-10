@@ -2,7 +2,7 @@
   "name": "ardesia",
   "version": "0.0.0",
   "description": "awesome reusable react components",
-  "main": "index.js",
+  "main": "lib/ardesia.min.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

@@ -2,6 +2,7 @@ const path = require("path");
 const webpack = require("webpack");
 
 module.exports = {
+	target: "node",
 	entry: {
 		ardesia: ["./source/components/index.js"]
 	},

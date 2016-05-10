@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "fac35a4b83c3fc2fcdae"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "25709d41200fbf8bb473"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -570,7 +570,7 @@
 /******/ 	__webpack_require__.c = installedModules;
 
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "build/";
+/******/ 	__webpack_require__.p = "http://0.0.0.0:9000/build/";
 
 /******/ 	// __webpack_hash__
 /******/ 	__webpack_require__.h = function() { return hotCurrentHash; };
@@ -10515,25 +10515,17 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("Cannot destructure undefined"); } /**
-	                                                                                                                  * Copyright (c) 2016, inkOfPixel, Srl.
-	                                                                                                                  * All rights reserved.
-	                                                                                                                  */
+	// import App from "./App";
 
-	var App = function App(_ref) {
-		_objectDestructuringEmpty(_ref);
+	/**
+	* Copyright (c) 2016, inkOfPixel, Srl.
+	* All rights reserved.
+	*/
 
-		return _react2.default.createElement(
-			"div",
-			{
-				className: "App"
-			},
-			"Hello app"
-		);
-	};
-
-	var appContainer = document.getElementById("app");
-	(0, _reactDom.render)(App, appContainer);
+	window.addEventListener("load", function () {
+		var appContainer = document.getElementById("app");
+		(0, _reactDom.render)(_react2.default.createElement("div", null), appContainer);
+	});
 
 /***/ },
 /* 85 */

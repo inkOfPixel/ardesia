@@ -1,6 +1,6 @@
 {
   "name": "ardesia",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "awesome reusable react components",
   "main": "lib/ardesia.min.js",
   "scripts": {

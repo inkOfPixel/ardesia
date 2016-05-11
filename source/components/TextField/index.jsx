@@ -3,7 +3,7 @@
 * All rights reserved.
 */
 
-import "./style.scss";
+import style from "./style.scss";
 import React, { PropTypes, Component } from "react";
 
 class TextField extends Component {

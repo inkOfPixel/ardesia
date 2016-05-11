@@ -24,9 +24,17 @@ module.exports = {
 				loaders: ["json"]
 			}, {
 				test: /\.scss$/,
-				loader: "style-loader!css-loader!sass-loader"
-				// ExtractTextPlugin.extract("style-loader", "css-loader?sourceMap!sass-loader")
+				loaders: [
+					"isomorphic-style-loader",
+					"css-loader",
+					"sass-loader"
+				]
 			}
+			// {
+			// 	test: /\.scss$/,
+			// 	loader: "style-loader!css-loader!sass-loader"
+			// 	// ExtractTextPlugin.extract("style-loader", "css-loader?sourceMap!sass-loader")
+			// }
 		]
 	},
 	plugins: [

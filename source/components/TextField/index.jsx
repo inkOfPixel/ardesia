@@ -3,9 +3,11 @@
 * All rights reserved.
 */
 
-import "./style.scss";
+import style from "./style";
 import React, { PropTypes, Component } from "react";
+import Radium from "radium";
 
+@Radium
 class TextField extends Component {
 	constructor(props) {
 		super(props);
@@ -35,6 +37,11 @@ class TextField extends Component {
 			<input
 				type="text"
 				className={ `TextField ${theme} ${className}` }
+				style={[
+					style.base,
+					theme === "light" && style.light,
+					theme === "dark" && style.dark
+				]}
 				value={value}
 				onChange={onChange}
 			/>

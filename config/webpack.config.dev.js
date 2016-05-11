@@ -6,7 +6,7 @@ module.exports = {
 		bundle: ["./source/main.js"]
 	},
 	output: {
-		path: path.resolve(__dirname, "../build"),
+		path: path.resolve(__dirname, "../website/scripts"),
 		publicPath: "http://0.0.0.0:9000/build/",
 		filename: "[name].js",
 		chunkFilename: "[id].[name].js"

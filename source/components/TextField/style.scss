@@ -1,15 +1,15 @@
-:local(.TextField) {
+.TextField {
 	border: none;
 	outline: none;
 	padding: 8px 15px;
 }
 
-:local(.TextField.light) {
+.TextField.light {
 	background-color: white;
 	border-bottom: 2px solid #ccc;
 }
 
-:local(.TextField.dark) {
+.TextField.dark {
 	background-color: #121212;
 	border-bottom: 2px solid #333;
 }

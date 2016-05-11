@@ -41,6 +41,7 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "gulp": "^3.9.1",
     "gulp-util": "^3.0.7",
+    "isomorphic-style-loader": "^1.0.0",
     "jest-cli": "^0.10.0",
     "json-loader": "^0.5.4",
     "node-sass": "^3.4.2",

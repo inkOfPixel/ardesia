@@ -24,10 +24,12 @@ module.exports = {
 				test: /\.json$/,
 				exclude: /node_modules/,
 				loaders: ["json"]
-			}, {
-				test: /\.scss$/,
-				loader: "style-loader!css-loader!sass-loader"
 			}
+			// ,
+			// {
+			// 	test: /\.scss$/,
+			// 	loader: "style-loader!css-loader!sass-loader"
+			// }
 		]
 	},
 	plugins: [

@@ -1,6 +1,5 @@
 const path = require("path");
 const webpack = require("webpack");
-// const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
 	entry: {
@@ -22,28 +21,13 @@ module.exports = {
 				test: /\.json$/,
 				exclude: /node_modules/,
 				loaders: ["json"]
-			}, {
-				test: /\.scss$/,
-				loaders: [
-					"isomorphic-style-loader",
-					"css-loader",
-					"sass-loader"
-				]
 			}
-			// {
-			// 	test: /\.scss$/,
-			// 	loader: "style-loader!css-loader!sass-loader"
-			// 	// ExtractTextPlugin.extract("style-loader", "css-loader?sourceMap!sass-loader")
-			// }
 		]
 	},
 	plugins: [
 		new webpack.DefinePlugin({
 			"process.env.NODE_ENV": JSON.stringify("development")
 		}),
-		// new ExtractTextPlugin("[name].css", {
-		// 	allChunks: true
-		// }),
 		new webpack.optimize.OccurenceOrderPlugin(),
 		new webpack.HotModuleReplacementPlugin()
 	],

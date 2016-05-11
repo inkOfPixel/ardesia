@@ -23,14 +23,6 @@ module.exports = {
 				test: /\.json$/,
 				exclude: /node_modules/,
 				loaders: ["json"]
-			},
-			{
-				test: /\.scss$/,
-				loaders: [
-					"isomorphic-style-loader",
-					"css-loader",
-					"sass-loader"
-				]
 			}
 		]
 	},

@@ -1,0 +1,28 @@
+@font-face {
+	font-family: Ailerons;
+	src: url(../fonts/Ailerons-Typeface.otf);
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+.header {
+	text-align: center;
+}
+
+.external-links {
+	position: fixed;
+	right: 15px;
+	top: 10px;
+}
+
+.logo {
+	width: 300px;
+}
+
+.title {
+	font-family: Ailerons, sans-serif;
+}

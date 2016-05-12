@@ -18,7 +18,7 @@ body {
 	font-family: RobotoCondensedLight, sans-serif;
 	font-size: 16px;
 	letter-spacing: 0.04em;
-	color: rgb(50,50,50);
+	color: rgb(51,51,51);
 }
 
 .header {
@@ -63,4 +63,21 @@ body {
 	width: 960px;
 	margin: 0 auto;
 	margin-top: 100px;
+}
+
+.footer {
+	height: 200px;
+	width: 100%;
+	text-align: center;
+	background-color: rgb(51, 51, 51);
+	margin-top: 100px;
+}
+
+.footer p {
+	padding-top: 83px;
+	color: rgb(255, 255, 255);
+}
+
+.footer a {
+	color: rgb(255, 255, 255);
 }

@@ -11,7 +11,15 @@ npm install ardesia --save
 
 ## Scripts
 
-### Deploy Ardesia website
+### Serve website
+
+```sh
+npm run website
+```
+
+Then visit the site at `0.0.0.0:9000`
+
+### Deploy website
 
 ```sh
 npm run gh-deploy

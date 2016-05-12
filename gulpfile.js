@@ -8,10 +8,10 @@ const gulp = require("gulp");
 const gutil = require("gulp-util");
 const webpack = require("webpack");
 const WebpackDevServer = require("webpack-dev-server");
-const devConfiguration = require("./config/webpack.config.dev");
-const libConfiguration = require("./config/webpack.config");
+const websiteConfiguration = require("./config/webpack.config.website");
+const libConfiguration = require("./config/webpack.config.lib");
 
-const DEV_SERVER_PORT = 9000;
+const WEBSITE_SERVER_PORT = 9000;
 const AGGREGATE_CLIENT_TIMEOUT = 300;
 
 const STOP_SIGNALS = {
@@ -41,18 +41,19 @@ function onProcessStop(cleanUpCallback) {
 	Object.keys(STOP_SIGNALS).forEach(listenToSignal);
 }
 
-gulp.task("default", ["webpack-dev-server"]);
+gulp.task("default", ["serve:website"]);
 
-gulp.task("webpack-dev-server", function runServer() {
+gulp.task("serve:website", function runServer() {
 	// Start a webpack-dev-server
-	devConfiguration.entry.bundle.unshift(
-		`webpack-dev-server/client?http://0.0.0.0:${DEV_SERVER_PORT}`,
+	websiteConfiguration.entry.bundle.unshift(
+		`webpack-dev-server/client?http://0.0.0.0:${WEBSITE_SERVER_PORT}`,
 		"webpack/hot/dev-server"
 	);
-	const compiler = webpack(devConfiguration);
+	const compiler = webpack(websiteConfiguration);
 
 	const devServer = new WebpackDevServer(compiler, {
-		publicPath: devConfiguration.output.publicPath,
+		publicPath: websiteConfiguration.output.publicPath,
+		contentBase: "./website",
 		hot: true,
 		historyApiFallback: true,
 		watchOptions: {
@@ -63,12 +64,12 @@ gulp.task("webpack-dev-server", function runServer() {
 		stats: { colors: true },
 		headers: { "Access-Control-Allow-Origin": "*" }
 	});
-	devServer.listen(DEV_SERVER_PORT, "0.0.0.0", function onEvent(error) {
+	devServer.listen(WEBSITE_SERVER_PORT, "0.0.0.0", function onEvent(error) {
 		if (error) {
 			throw new gutil.PluginError("webpack-dev-server", error);
 		}
 		// Server listening
-		gutil.log("[webpack-dev-server]", `http://0.0.0.0:${DEV_SERVER_PORT}/webpack-dev-server/index.html`);
+		gutil.log("[webpack-dev-server]", `http://0.0.0.0:${WEBSITE_SERVER_PORT}/webpack-dev-server/index.html`);
 	});
 
 	onProcessStop(function closeServer() {
@@ -77,12 +78,12 @@ gulp.task("webpack-dev-server", function runServer() {
 	});
 });
 
-gulp.task("build", function buildClient(callback) {
-	const compiler = webpack(devConfiguration);
+gulp.task("build:website", function buildClient(callback) {
+	const compiler = webpack(websiteConfiguration);
 	compiler.run(onBuild("[webpack | build]", callback));
 });
 
-gulp.task("build-lib", function buildClient(callback) {
+gulp.task("build:lib", function buildClient(callback) {
 	const compiler = webpack(libConfiguration);
 	compiler.run(onBuild("[webpack | build-lib]", callback));
 });

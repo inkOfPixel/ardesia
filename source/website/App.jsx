@@ -4,7 +4,7 @@
 */
 
 import React from "react";
-import { TextField } from "./components";
+import { TextField } from "../components";
 
 const App = ({ }) => (
 	<div

@@ -5,7 +5,8 @@
   "main": "lib/ardesia.min.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-	"gh-deploy": "./scripts/git-gh-deploy.sh website"
+	"gh-deploy": "./scripts/git-gh-deploy.sh website",
+	"website": "gulp serve:website"
   },
   "repository": {
     "type": "git",

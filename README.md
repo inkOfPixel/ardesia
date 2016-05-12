@@ -13,6 +13,8 @@ npm install ardesia --save
 
 ### Serve website
 
+To serve the website locally run:
+
 ```sh
 npm run website
 ```
@@ -20,6 +22,8 @@ npm run website
 Then visit the site at `0.0.0.0:9000`
 
 ### Deploy website
+
+To deploy the website folder to the gh-pages branch run:
 
 ```sh
 npm run gh-deploy

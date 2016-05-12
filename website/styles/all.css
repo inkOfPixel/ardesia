@@ -3,26 +3,64 @@
 	src: url(../fonts/Ailerons-Typeface.otf);
 }
 
+@font-face {
+	font-family: RobotoCondensedLight;
+	src: url(../fonts/RobotoCondensed-Light.ttf);
+}
+
 * {
 	margin: 0;
 	padding: 0;
 	border: 0;
 }
 
+body {
+	font-family: RobotoCondensedLight, sans-serif;
+	font-size: 16px;
+	letter-spacing: 0.04em;
+	color: rgb(50,50,50);
+}
+
 .header {
 	text-align: center;
 }
 
-.external-links {
+.header .external-links {
 	position: fixed;
-	right: 15px;
-	top: 10px;
+	right: 40px;
+	top: 40px;
 }
 
-.logo {
-	width: 300px;
+.header .external-links .logo-github {
+	height: 32px;
+	opacity: 0.7;
+	transition: all 0.3s;
 }
 
-.title {
+.header .external-links .logo-github:hover {
+	opacity: 1;
+}
+
+.header .logo {
+	height: 120px;
+	margin-top: 100px
+}
+
+.header .title {
 	font-family: Ailerons, sans-serif;
+	font-weight: 100;
+	letter-spacing: 0.2em;
+	margin-top: 20px
+}
+
+.header p {
+	width: 600px;
+	margin: 0 auto;
+	margin-top: 20px;
+}
+
+.wrapper{
+	width: 960px;
+	margin: 0 auto;
+	margin-top: 100px;
 }

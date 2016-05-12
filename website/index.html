@@ -2,14 +2,20 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<link rel="shortcut icon" type="image/png" href="images/favicon-ardesia.svg">
+	<link rel="shortcut icon" type="image/png" href="images/favicon.png">
 	<link rel="stylesheet" href="styles/all.css">
 	<title>Ardesia | Reusable React Components</title>
 </head>
 <body>
 	<header class="header">
 		<div class="external-links">
-			<a href="https://github.com/inkOfPixel/ardesia">GitHub</a>
+			<a href="https://github.com/inkOfPixel/ardesia">
+				<img
+				class="logo-github"
+				src="images/logo-github.svg"
+				alt="GitHub logo"
+				>
+			</a>
 		</div>
 		<img
 			class="logo"
@@ -22,7 +28,9 @@
 		</p>
 	</header>
 
-	<div id="app"></div>
+	<div class="wrapper">
+		<div id="app"></div>
+	</div>
 	<script src="scripts/bundle.js"></script>
 </body>
 </html>

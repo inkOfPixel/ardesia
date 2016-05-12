@@ -3,7 +3,7 @@ const webpack = require("webpack");
 
 module.exports = {
 	entry: {
-		bundle: ["./source/website/main.js"]
+		bundle: ["./source/showcase-app/main.js"]
 	},
 	output: {
 		path: path.resolve(__dirname, "../website/scripts"),

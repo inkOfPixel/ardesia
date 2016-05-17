@@ -4,15 +4,32 @@
 */
 
 import React, { PropTypes } from "react";
-import Radium from "radium";
+import radium from "radium";
+import style from "./style";
 
-@Radium
-const StackLayout = ({ }) => (
+const StackLayout = ({ children, axis }) => (
 	<div
 		className="StackLayout"
+		style={[
+			style.base,
+			axis === "vertical" && style.vertical,
+			axis === "horizontal" && style.horizontal
+		]}
 	>
-
+		{children}
 	</div>
 );
 
-export default StackLayout;
+StackLayout.propTypes = {
+	children: PropTypes.arrayOf(PropTypes.element),
+	axis: PropTypes.oneOf([
+		"horizontal",
+		"vertical"
+	])
+};
+
+StackLayout.defaultProps = {
+	axis: "vertical"
+};
+
+export default radium(StackLayout);

@@ -5,9 +5,9 @@
 
 import style from "./style";
 import React, { PropTypes, Component } from "react";
-import Radium from "radium";
+import radium from "radium";
 
-@Radium
+@radium
 class TextField extends Component {
 	constructor(props) {
 		super(props);

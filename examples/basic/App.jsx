@@ -4,14 +4,17 @@
 */
 
 import React from "react";
-import { TextField } from "../../source";
+import { TextField, StackLayout } from "../../source";
 
 const App = ({ }) => (
 	<div
 		className="App"
 	>
-		<h3>TextField</h3>
-		<TextField />
+		<StackLayout>
+			<h3>TextField</h3>
+			<TextField />
+			<TextField />
+		</StackLayout>
 	</div>
 );
 

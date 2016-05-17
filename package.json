@@ -2,11 +2,14 @@
   "name": "ardesia",
   "version": "0.0.11",
   "description": "awesome reusable react components",
-  "main": "lib/ardesia.min.js",
+  "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-	"gh-deploy": "./scripts/git-gh-deploy.sh website",
-	"website": "gulp serve:website"
+	"clean": "rm -rf lib",
+	"build": "babel source --out-dir lib",
+	"prepublish": "npm run clean && npm run build",
+    "gh-deploy": "./scripts/git-gh-deploy.sh website",
+    "examples": "gulp serve:examples"
   },
   "repository": {
     "type": "git",
@@ -17,19 +20,24 @@
     "components",
     "ui"
   ],
-  "author": "Massimo De Marchi <massimo@inkofpixel.com> (http://inkofpixel.com)",
+  "authors": [
+    "Massimo De Marchi <massimo@inkofpixel.com> (http://inkofpixel.com)",
+    "Mattia Marcon <mattia@inkofpixel.com> (http://inkofpixel.com)",
+    "Federico Badini <federico@inkofpixel.com> (http://inkofpixel.com)"
+  ],
   "license": "SEE LICENSE IN <LICENSE>",
   "bugs": {
     "url": "https://github.com/inkOfPixel/ardesia/issues"
   },
   "homepage": "https://github.com/inkOfPixel/ardesia#readme",
   "dependencies": {
+    "lodash": "^4.12.0",
     "radium": "^0.17.1",
     "react": "^15.0.2",
     "react-dom": "^15.0.2"
   },
   "devDependencies": {
-    "babel-cli": "^6.6.5",
+    "babel-cli": "^6.8.0",
     "babel-core": "^6.7.4",
     "babel-eslint": "^6.0.3",
     "babel-jest": "^10.0.1",

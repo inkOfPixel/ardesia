@@ -3,10 +3,10 @@ const webpack = require("webpack");
 
 module.exports = {
 	entry: {
-		bundle: ["./website/scripts/app/main.js"]
+		basic: ["./examples/basic/index.js"]
 	},
 	output: {
-		path: path.resolve(__dirname, "../website/scripts"),
+		path: path.resolve(__dirname, "../examples/scripts"),
 		publicPath: "http://0.0.0.0:9000/scripts/",
 		filename: "[name].js",
 		chunkFilename: "[id].[name].js"

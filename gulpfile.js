@@ -10,6 +10,8 @@ const webpack = require("webpack");
 const WebpackDevServer = require("webpack-dev-server");
 const websiteConfiguration = require("./config/webpack.config.website");
 const libConfiguration = require("./config/webpack.config.lib");
+const examplesConfiguration = require("./config/webpack.config.examples");
+const forOwn = require("lodash/forOwn");
 
 const WEBSITE_SERVER_PORT = 9000;
 const AGGREGATE_CLIENT_TIMEOUT = 300;
@@ -43,17 +45,23 @@ function onProcessStop(cleanUpCallback) {
 
 gulp.task("default", ["serve:website"]);
 
-gulp.task("serve:website", function runServer() {
+gulp.task("serve:examples", function runServer() {
 	// Start a webpack-dev-server
-	websiteConfiguration.entry.bundle.unshift(
-		`webpack-dev-server/client?http://0.0.0.0:${WEBSITE_SERVER_PORT}`,
-		"webpack/hot/dev-server"
-	);
-	const compiler = webpack(websiteConfiguration);
+	forOwn(examplesConfiguration.entry, (entryPoint) => {
+		entryPoint.unshift(
+			`webpack-dev-server/client?http://0.0.0.0:${WEBSITE_SERVER_PORT}`,
+			"webpack/hot/dev-server"
+		);
+	});
+	// examplesConfiguration.entry.bundle.unshift(
+	// 	`webpack-dev-server/client?http://0.0.0.0:${WEBSITE_SERVER_PORT}`,
+	// 	"webpack/hot/dev-server"
+	// );
+	const compiler = webpack(examplesConfiguration);
 
 	const devServer = new WebpackDevServer(compiler, {
-		publicPath: websiteConfiguration.output.publicPath,
-		contentBase: "./website",
+		publicPath: examplesConfiguration.output.publicPath,
+		contentBase: "./examples/",
 		hot: true,
 		historyApiFallback: true,
 		watchOptions: {
@@ -69,7 +77,7 @@ gulp.task("serve:website", function runServer() {
 			throw new gutil.PluginError("webpack-dev-server", error);
 		}
 		// Server listening
-		gutil.log("[webpack-dev-server]", `http://0.0.0.0:${WEBSITE_SERVER_PORT}/webpack-dev-server/index.html`);
+		gutil.log("[webpack-dev-server]", `http://0.0.0.0:${WEBSITE_SERVER_PORT}/index.html`);
 	});
 
 	onProcessStop(function closeServer() {

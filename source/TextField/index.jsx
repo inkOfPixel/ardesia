@@ -31,16 +31,14 @@ class TextField extends Component {
 	}
 
 	render() {
-		const { className, theme } = this.props;
+		const { className } = this.props;
 		const { value, onChange } = this.state;
 		return (
 			<input
 				type="text"
-				className={ `TextField ${theme} ${className}` }
+				className={ `TextField ${className}` }
 				style={[
-					style.base,
-					theme === "light" && style.light,
-					theme === "dark" && style.dark
+					style.base
 				]}
 				value={value}
 				onChange={onChange}
@@ -52,14 +50,12 @@ class TextField extends Component {
 TextField.propTypes = {
 	value: PropTypes.string,
 	className: PropTypes.string,
-	theme: PropTypes.string,
 	onChange: PropTypes.func
 };
 
 TextField.defaultProps = {
 	value: "",
-	className: "",
-	theme: "light"
+	className: ""
 };
 
 export default TextField;

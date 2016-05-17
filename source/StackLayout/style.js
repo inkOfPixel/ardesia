@@ -14,3 +14,13 @@ export default {
 		flexDirection: "column"
 	}
 };
+
+export const horizontalSpacing = value => ({
+	marginLeft: value,
+	marginRight: value
+});
+
+export const verticalSpacing = value => ({
+	marginTop: value,
+	marginBottom: value
+});

@@ -10,7 +10,9 @@ const App = ({ }) => (
 	<div
 		className="App"
 	>
-		<StackLayout>
+		<StackLayout
+			spacing="3px"
+		>
 			<h3>TextField</h3>
 			<TextField />
 			<TextField />

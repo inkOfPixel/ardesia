@@ -3,11 +3,11 @@
 * All rights reserved.
 */
 
-import React, { PropTypes } from "react";
+import React, { PropTypes, Children, cloneElement } from "react";
 import radium from "radium";
-import style from "./style";
+import style, { horizontalSpacing, verticalSpacing } from "./style";
 
-const StackLayout = ({ children, axis }) => (
+const StackLayout = ({ children, axis, spacing }) => (
 	<div
 		className="StackLayout"
 		style={[
@@ -16,16 +16,25 @@ const StackLayout = ({ children, axis }) => (
 			axis === "horizontal" && style.horizontal
 		]}
 	>
-		{children}
+		{Children.map(children, child => {
+			return cloneElement(child, { style: [
+				axis === "horizontal" && spacing !== undefined && horizontalSpacing(spacing),
+				axis === "vertical" && spacing !== undefined && verticalSpacing(spacing)
+			] });
+		})}
 	</div>
 );
 
 StackLayout.propTypes = {
-	children: PropTypes.arrayOf(PropTypes.element),
+	children: PropTypes.oneOfType([
+		PropTypes.element,
+		PropTypes.arrayOf(PropTypes.element)
+	]),
 	axis: PropTypes.oneOf([
 		"horizontal",
 		"vertical"
-	])
+	]),
+	spacing: PropTypes.string
 };
 
 StackLayout.defaultProps = {

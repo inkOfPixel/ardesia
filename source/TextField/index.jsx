@@ -3,7 +3,7 @@
 * All rights reserved.
 */
 
-import style from "./style";
+import Style from "./style";
 import React, { PropTypes, Component } from "react";
 import radium from "radium";
 
@@ -31,14 +31,15 @@ class TextField extends Component {
 	}
 
 	render() {
-		const { className } = this.props;
+		const { className, style } = this.props;
 		const { value, onChange } = this.state;
 		return (
 			<input
 				type="text"
 				className={ `TextField ${className}` }
 				style={[
-					style.base
+					Style.base,
+					style
 				]}
 				value={value}
 				onChange={onChange}
@@ -50,7 +51,8 @@ class TextField extends Component {
 TextField.propTypes = {
 	value: PropTypes.string,
 	className: PropTypes.string,
-	onChange: PropTypes.func
+	onChange: PropTypes.func,
+	style: PropTypes.any
 };
 
 TextField.defaultProps = {

@@ -11,15 +11,15 @@ npm install ardesia --save
 
 ## Scripts
 
-### Serve website
+### Serve examples
 
-To serve the website locally run:
+To serve the examples locally run:
 
 ```sh
-npm run website
+npm run examples
 ```
 
-Then visit the site at `0.0.0.0:9000`
+Then visit `0.0.0.0:9000`
 
 ### Deploy website
 

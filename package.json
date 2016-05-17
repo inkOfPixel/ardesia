@@ -1,13 +1,13 @@
 {
   "name": "ardesia",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "awesome reusable react components",
   "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-	"clean": "rm -rf lib",
-	"build": "babel source --out-dir lib",
-	"prepublish": "npm run clean && npm run build",
+    "clean": "rm -rf lib",
+    "build": "babel source --out-dir lib",
+    "prepublish": "npm run clean && npm run build",
     "gh-deploy": "./scripts/git-gh-deploy.sh website",
     "examples": "gulp serve:examples"
   },

@@ -5,12 +5,13 @@
 
 export default {
 	base: {
+		border: "none",
 		outline: "none",
 		padding: "8px 8px",
 		backgroundColor: "white",
-		border: "1px solid #ccc",
+		boxShadow: "inset 0px 0px 0px 1px #ccc",
 		":focus": {
-			border: "2px solid #90CAF9"
+			boxShadow: "inset 0px 0px 0px 2px #90CAF9"
 		}
 	}
 };

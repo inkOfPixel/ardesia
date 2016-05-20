@@ -12,15 +12,24 @@ export default {
 	},
 	vertical: {
 		flexDirection: "column"
+	},
+	alignStart: {
+		alignItems: "flex-start"
+	},
+	alignCenter: {
+		alignItems: "center"
+	},
+	alignEnd: {
+		alignItems: "flex-end"
+	},
+	alignStretch: {
+		alignItems: "stretch"
 	}
 };
 
-export const horizontalSpacing = value => ({
-	marginLeft: value,
-	marginRight: value
-});
-
-export const verticalSpacing = value => ({
-	marginTop: value,
-	marginBottom: value
-});
+export const childSpacing = {
+	left: value => ({ marginLeft: value }),
+	right: value => ({ marginRight: value }),
+	top: value => ({ marginTop: value }),
+	bottom: value => ({ marginBottom: value })
+};

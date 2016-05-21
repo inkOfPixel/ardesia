@@ -10,6 +10,7 @@
     "prepublish": "npm run clean && npm run build",
     "gh-deploy": "./scripts/git-gh-deploy.sh website",
     "examples": "gulp serve:examples",
+	"build:website": "gulp build:website",
 	"website": "gulp serve:website"
   },
   "repository": {

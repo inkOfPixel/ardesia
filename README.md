@@ -61,6 +61,7 @@ Set button style to match the intent of the triggered action. Accepted values ar
 * `"success"`
 * `"warning"`
 * `"danger"`
+
 Defaults to `"primary"`.
 
 ###### `onClick(event)`
@@ -72,6 +73,7 @@ Set button size. Accepted values are:
 * `"small"`
 * `"normal"`
 * `"large"`
+
 Defaults to `"normal"`.
 
 ###### `style`
@@ -82,6 +84,7 @@ Set button appearance. Accepted values are:
 * `"fill"`
 * `"hollow"`
 * `"link"`
+
 Defaults to `"fill"`.
 
 ### Layouts
@@ -97,12 +100,14 @@ Set the children alignment on the cross-axis. Accepted values are:
 * `"center"`
 * `"end"`
 * `"stretch"`
+
 Defaults to `"start"`.
 
 ###### `axis`
 Set the axis along which to pile the children. Accepted values are:
 * `"horizontal"`
 * `"vertical"`
+
 Defaults to `"vertical"`.
 
 ###### `spacing`

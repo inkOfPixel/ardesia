@@ -9,7 +9,8 @@
     "build": "babel source --out-dir lib",
     "prepublish": "npm run clean && npm run build",
     "gh-deploy": "./scripts/git-gh-deploy.sh website",
-    "examples": "gulp serve:examples"
+    "examples": "gulp serve:examples",
+	"website": "gulp serve:website"
   },
   "repository": {
     "type": "git",

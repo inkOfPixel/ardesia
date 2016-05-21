@@ -19,6 +19,16 @@ To serve the examples locally run:
 npm run examples
 ```
 
+Then visit `0.0.0.0:9001`
+
+### Serve website
+
+To serve the website locally run:
+
+```sh
+npm run website
+```
+
 Then visit `0.0.0.0:9000`
 
 ### Deploy website

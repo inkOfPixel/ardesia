@@ -7,7 +7,7 @@ module.exports = {
 	},
 	output: {
 		path: path.resolve(__dirname, "../examples/scripts"),
-		publicPath: "http://0.0.0.0:9000/scripts/",
+		publicPath: "http://0.0.0.0:9001/scripts/",
 		filename: "[name].js",
 		chunkFilename: "[id].[name].js"
 	},

@@ -43,47 +43,14 @@ function onProcessStop(cleanUpCallback) {
 	Object.keys(STOP_SIGNALS).forEach(listenToSignal);
 }
 
-gulp.task("default", ["serve:website"]);
+gulp.task("default", ["serve:examples"]);
 
-gulp.task("serve:examples", function runServer() {
-	// Start a webpack-dev-server
-	forOwn(examplesConfiguration.entry, (entryPoint) => {
-		entryPoint.unshift(
-			`webpack-dev-server/client?http://0.0.0.0:${WEBSITE_SERVER_PORT}`,
-			"webpack/hot/dev-server"
-		);
-	});
-	// examplesConfiguration.entry.bundle.unshift(
-	// 	`webpack-dev-server/client?http://0.0.0.0:${WEBSITE_SERVER_PORT}`,
-	// 	"webpack/hot/dev-server"
-	// );
-	const compiler = webpack(examplesConfiguration);
+gulp.task("serve:examples", () => {
+	runDevServer(examplesConfiguration, "./examples/", WEBSITE_SERVER_PORT + 1);
+});
 
-	const devServer = new WebpackDevServer(compiler, {
-		publicPath: examplesConfiguration.output.publicPath,
-		contentBase: "./examples/",
-		hot: true,
-		historyApiFallback: true,
-		watchOptions: {
-			aggregateTimeout: AGGREGATE_CLIENT_TIMEOUT
-		},
-		noInfo: true,
-		lazy: false,
-		stats: { colors: true },
-		headers: { "Access-Control-Allow-Origin": "*" }
-	});
-	devServer.listen(WEBSITE_SERVER_PORT, "0.0.0.0", function onEvent(error) {
-		if (error) {
-			throw new gutil.PluginError("webpack-dev-server", error);
-		}
-		// Server listening
-		gutil.log("[webpack-dev-server]", `http://0.0.0.0:${WEBSITE_SERVER_PORT}/index.html`);
-	});
-
-	onProcessStop(function closeServer() {
-		console.log(ANSI.YELLOW, "Closing WebpackDevServer..", ANSI.RESET);
-		devServer.close();
-	});
+gulp.task("serve:website", () => {
+	runDevServer(websiteConfiguration, "./website/", WEBSITE_SERVER_PORT);
 });
 
 gulp.task("build:website", function buildClient(callback) {
@@ -114,4 +81,41 @@ function onBuild(moduleName, done) {
 			done();
 		}
 	};
+}
+
+function runDevServer(config, contentBase, port) {
+	// Start a webpack-dev-server
+	forOwn(config.entry, (entryPoint) => {
+		entryPoint.unshift(
+			`webpack-dev-server/client?http://0.0.0.0:${port}`,
+			"webpack/hot/dev-server"
+		);
+	});
+	const compiler = webpack(config);
+
+	const devServer = new WebpackDevServer(compiler, {
+		publicPath: config.output.publicPath,
+		contentBase, // "./examples/",
+		hot: true,
+		historyApiFallback: true,
+		watchOptions: {
+			aggregateTimeout: AGGREGATE_CLIENT_TIMEOUT
+		},
+		noInfo: true,
+		lazy: false,
+		stats: { colors: true },
+		headers: { "Access-Control-Allow-Origin": "*" }
+	});
+	devServer.listen(port, "0.0.0.0", function onEvent(error) {
+		if (error) {
+			throw new gutil.PluginError("webpack-dev-server", error);
+		}
+		// Server listening
+		gutil.log("[webpack-dev-server]", `http://0.0.0.0:${port}/index.html`);
+	});
+
+	onProcessStop(function closeServer() {
+		console.log(ANSI.YELLOW, "Closing WebpackDevServer..", ANSI.RESET);
+		devServer.close();
+	});
 }

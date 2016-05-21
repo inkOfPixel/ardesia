@@ -1,6 +1,6 @@
 {
   "name": "ardesia",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "awesome reusable react components",
   "main": "lib/index.js",
   "scripts": {

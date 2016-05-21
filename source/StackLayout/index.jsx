@@ -106,20 +106,19 @@ function getAlignStyle(align) {
 }
 
 StackLayout.propTypes = {
-	children: PropTypes.oneOfType([
-		PropTypes.element,
-		PropTypes.arrayOf(PropTypes.element)
-	]),
-	axis: PropTypes.oneOf([
-		"horizontal",
-		"vertical"
-	]),
-	spacing: PropTypes.string,
 	align: PropTypes.oneOf([
 		"start",
 		"center",
 		"end",
 		"stretch"
+	]),
+	axis: PropTypes.oneOf([
+		"horizontal",
+		"vertical"
+	]),
+	children: PropTypes.oneOfType([
+		PropTypes.element,
+		PropTypes.arrayOf(PropTypes.element)
 	]),
 	distribution: PropTypes.oneOf([
 		"start",
@@ -127,7 +126,8 @@ StackLayout.propTypes = {
 		"end",
 		"spaceBetween",
 		"spaceAround"
-	])
+	]),
+	spacing: PropTypes.string
 };
 
 StackLayout.defaultProps = {

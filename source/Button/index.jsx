@@ -7,7 +7,14 @@ import Style from "./style";
 import React, { PropTypes } from "react";
 import radium from "radium";
 
-const Button = ({ children, type, actionType, size, style }) => (
+const Button = ({
+	children,
+	type,
+	actionType,
+	size,
+	style,
+	onClick
+}) => (
 	<button
 		className="Button"
 		style={{
@@ -16,6 +23,7 @@ const Button = ({ children, type, actionType, size, style }) => (
 			...Style[size],
 			...style
 		}}
+		onClick={onClick}
 	>
 		{children}
 	</button>
@@ -30,29 +38,30 @@ function capitalizeText(text) {
 }
 
 Button.propTypes = {
-	children: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.element,
-		PropTypes.arrayOf(PropTypes.element)
-	]),
-	size: PropTypes.oneOf([
-		"extraSmall",
-		"small",
-		"normal",
-		"large"
-	]),
-	type: PropTypes.oneOf([
-		"fill",
-		"hollow",
-		"link"
-	]),
 	actionType: PropTypes.oneOf([
 		"primary",
 		"success",
 		"warning",
 		"danger"
 	]),
-	style: PropTypes.object
+	children: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.element,
+		PropTypes.arrayOf(PropTypes.element)
+	]),
+	onClick: PropTypes.func,
+	size: PropTypes.oneOf([
+		"extraSmall",
+		"small",
+		"normal",
+		"large"
+	]),
+	style: PropTypes.object,
+	type: PropTypes.oneOf([
+		"fill",
+		"hollow",
+		"link"
+	])
 };
 
 Button.defaultProps = {

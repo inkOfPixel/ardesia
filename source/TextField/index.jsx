@@ -49,10 +49,10 @@ class TextField extends Component {
 }
 
 TextField.propTypes = {
-	value: PropTypes.string,
 	className: PropTypes.string,
 	onChange: PropTypes.func,
-	style: PropTypes.any
+	style: PropTypes.object,
+	value: PropTypes.string
 };
 
 TextField.defaultProps = {

@@ -14,14 +14,109 @@ const App = ({ }) => (
 	<div
 		className="App"
 	>
-		<StackLayout>
+		<StackLayout
+			spacing="15px"
+		>
 			<section>
 				<h3>TextField</h3>
 				<TextField />
 			</section>
 			<section>
 				<h3>Buttons</h3>
-				<Button>Hello</Button>
+				<StackLayout
+					spacing="5px"
+				>
+					<div>
+						<h4>Sizes</h4>
+						<StackLayout
+							axis="horizontal"
+							spacing="10px"
+							align="end"
+						>
+							<Button size="large">Large</Button>
+							<Button>Normal</Button>
+							<Button size="small">Small</Button>
+							<Button size="extraSmall">Extra Small</Button>
+						</StackLayout>
+					</div>
+					<div>
+						<h4>Fill buttons</h4>
+						<StackLayout
+							axis="horizontal"
+							spacing="10px"
+							align="end"
+						>
+							<Button>Primary</Button>
+							<Button actionType="success">Success</Button>
+							<Button actionType="warning">Warning</Button>
+							<Button actionType="danger">Danger</Button>
+						</StackLayout>
+					</div>
+					<div>
+						<h4>Hollow buttons</h4>
+						<StackLayout
+							axis="horizontal"
+							spacing="10px"
+							align="end"
+						>
+							<Button
+								type="hollow"
+							>
+								Primary
+							</Button>
+							<Button
+								actionType="success"
+								type="hollow"
+							>
+								Success
+							</Button>
+							<Button
+								actionType="warning"
+								type="hollow"
+							>
+								Warning
+							</Button>
+							<Button
+								actionType="danger"
+								type="hollow"
+							>
+								Danger
+							</Button>
+						</StackLayout>
+					</div>
+					<div>
+						<h4>Link buttons</h4>
+						<StackLayout
+							axis="horizontal"
+							spacing="10px"
+							align="end"
+						>
+							<Button
+								type="link"
+							>
+								Primary
+							</Button>
+							<Button
+								actionType="success"
+								type="link"
+							>
+								Success
+							</Button>
+							<Button
+								actionType="warning"
+								type="link"
+							>
+								Warning
+							</Button>
+							<Button
+								actionType="danger"
+								type="link"
+							>
+								Danger
+							</Button>
+						</StackLayout>
+					</div>
+				</StackLayout>
 			</section>
 		</StackLayout>
 	</div>

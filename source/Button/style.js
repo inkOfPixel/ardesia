@@ -36,11 +36,11 @@ export default {
 	},
 	normal: {
 		fontSize: "12px",
-		padding: "8px 15px"
+		padding: "8px 20px"
 	},
 	large: {
 		fontSize: "14px",
-		padding: "10px 18px"
+		padding: "8px 24px"
 	},
 	fillPrimary: {
 		background: colors.primary.toString(),

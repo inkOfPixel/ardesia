@@ -19,18 +19,12 @@ const App = ({ }) => (
 		>
 			<section>
 				<h3>TextField</h3>
-<<<<<<< HEAD
 				<hr></hr>
-=======
->>>>>>> 99aa2d373e8f0eb16614f1189e4d9071ae932a45
 				<TextField />
 			</section>
 			<section>
 				<h3>Buttons</h3>
-<<<<<<< HEAD
 				<hr></hr>
-=======
->>>>>>> 99aa2d373e8f0eb16614f1189e4d9071ae932a45
 				<StackLayout
 					spacing="5px"
 				>
@@ -122,11 +116,6 @@ const App = ({ }) => (
 							>
 								Danger
 							</Button>
-<<<<<<< HEAD
-
-=======
-							
->>>>>>> 99aa2d373e8f0eb16614f1189e4d9071ae932a45
 						</StackLayout>
 					</div>
 				</StackLayout>

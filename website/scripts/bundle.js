@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "e8c734c7b8b472e8dc9d"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "2da811af88147a123e38"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -11757,16 +11757,16 @@
 			padding: "4px 10px"
 		},
 		small: {
-			fontSize: "11px",
+			fontSize: "12px",
 			padding: "6px 12px"
 		},
 		normal: {
-			fontSize: "12px",
+			fontSize: "14px",
 			padding: "8px 20px"
 		},
 		large: {
-			fontSize: "14px",
-			padding: "8px 24px"
+			fontSize: "16px",
+			padding: "10px 24px"
 		},
 		fillPrimary: {
 			background: colors.primary.toString(),
@@ -12267,6 +12267,7 @@
 						null,
 						"TextField"
 					),
+					_react2.default.createElement("hr", null),
 					_react2.default.createElement(_source.TextField, null)
 				),
 				_react2.default.createElement(
@@ -12277,6 +12278,7 @@
 						null,
 						"Buttons"
 					),
+					_react2.default.createElement("hr", null),
 					_react2.default.createElement(
 						_source.StackLayout,
 						{

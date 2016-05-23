@@ -6,6 +6,6 @@ then
 fi
 gulp build:website &&
 git add . &&
-git commit -m "deploy to $1" &&
-git push $1 master &&
+git commit -m "deploy to gh-pages" &&
+git push origin master &&
 git subtree push --prefix $1 origin gh-pages

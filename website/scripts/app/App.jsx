@@ -19,10 +19,12 @@ const App = ({ }) => (
 		>
 			<section>
 				<h3>TextField</h3>
+				<hr></hr>
 				<TextField />
 			</section>
 			<section>
 				<h3>Buttons</h3>
+				<hr></hr>
 				<StackLayout
 					spacing="5px"
 				>
@@ -114,7 +116,7 @@ const App = ({ }) => (
 							>
 								Danger
 							</Button>
-							
+
 						</StackLayout>
 					</div>
 				</StackLayout>

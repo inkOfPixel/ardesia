@@ -4,6 +4,11 @@
 }
 
 @font-face {
+	font-family: RobotoCondensedRegular;
+	src: url(../fonts/RobotoCondensed-Regular.ttf);
+}
+
+@font-face {
 	font-family: RobotoCondensedLight;
 	src: url(../fonts/RobotoCondensed-Light.ttf);
 }
@@ -15,11 +20,32 @@
 }
 
 body {
-	font-family: RobotoCondensedLight, sans-serif;
-	font-size: 16px;
+	font-family: RobotoCondensedRegular, sans-serif;
+	font-size: 14px;
 	letter-spacing: 0.04em;
 	color: rgb(51,51,51);
 }
+
+h3 {
+	font-family: RobotoCondensedRegular, sans-serif;
+	font-size: 14px;
+	letter-spacing: 0.04em;
+}
+
+h4 {
+	font-family: RobotoCondensedLight, sans-serif;
+	font-size: 14px;
+	letter-spacing: 0.04em;
+}
+
+hr {
+	height: 1px;
+	width: 100%;
+	background-color: rgb(220,220,220);
+	margin-top: 5px;
+	margin-bottom: 15px;
+}
+
 
 .header {
 	text-align: center;
@@ -42,8 +68,8 @@ body {
 }
 
 .header .logo {
-	height: 120px;
-	margin-top: 100px
+	height: 96px;
+	margin-top: 80px;
 }
 
 .header .title {
@@ -62,7 +88,24 @@ body {
 .wrapper{
 	width: 960px;
 	margin: 0 auto;
-	margin-top: 100px;
+	margin-top: 60px;
+}
+
+.wrapper section {
+	width: 100%;
+}
+
+.wrapper section .StackLayout div {
+	width: 100%;
+}
+
+.wrapper section .StackLayout div h4 {
+	padding-top: 15px;
+	padding-bottom: 5px
+}
+
+.wrapper section .StackLayout div:first-child h4 {
+	padding-top: 0;
 }
 
 .footer {
@@ -80,4 +123,22 @@ body {
 
 .footer a {
 	color: rgb(255, 255, 255);
+}
+
+
+@media (max-width: 980px) {
+	.wrapper{
+		width: 100%;
+		margin-left: 20px;
+		margin-right: 20px;
+	}
+}
+
+
+/* Button */
+
+.Button {
+	font-family: RobotoCondensedRegular, sans-serif;
+	letter-spacing: 0.04em;
+	transition: all 0.3s;
 }

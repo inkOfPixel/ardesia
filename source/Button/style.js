@@ -31,16 +31,16 @@ export default {
 		padding: "4px 10px"
 	},
 	small: {
-		fontSize: "11px",
+		fontSize: "12px",
 		padding: "6px 12px"
 	},
 	normal: {
-		fontSize: "12px",
+		fontSize: "14px",
 		padding: "8px 20px"
 	},
 	large: {
-		fontSize: "14px",
-		padding: "8px 24px"
+		fontSize: "16px",
+		padding: "10px 24px"
 	},
 	fillPrimary: {
 		background: colors.primary.toString(),

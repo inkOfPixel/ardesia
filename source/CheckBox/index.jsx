@@ -18,6 +18,7 @@ class CheckBox extends Component {
 	render() {
 		return (
 			<div className="CheckBox">
+				CheckBox
 			</div>
 		);
 	}

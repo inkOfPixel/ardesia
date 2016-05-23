@@ -65,11 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-<<<<<<< HEAD
 /******/ 	var hotCurrentHash = "2da811af88147a123e38"; // eslint-disable-line no-unused-vars
-=======
-/******/ 	var hotCurrentHash = "e8c734c7b8b472e8dc9d"; // eslint-disable-line no-unused-vars
->>>>>>> 99aa2d373e8f0eb16614f1189e4d9071ae932a45
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -11761,7 +11757,6 @@
 			padding: "4px 10px"
 		},
 		small: {
-<<<<<<< HEAD
 			fontSize: "12px",
 			padding: "6px 12px"
 		},
@@ -11772,18 +11767,6 @@
 		large: {
 			fontSize: "16px",
 			padding: "10px 24px"
-=======
-			fontSize: "11px",
-			padding: "6px 12px"
-		},
-		normal: {
-			fontSize: "12px",
-			padding: "8px 20px"
-		},
-		large: {
-			fontSize: "14px",
-			padding: "8px 24px"
->>>>>>> 99aa2d373e8f0eb16614f1189e4d9071ae932a45
 		},
 		fillPrimary: {
 			background: colors.primary.toString(),
@@ -12284,10 +12267,7 @@
 						null,
 						"TextField"
 					),
-<<<<<<< HEAD
 					_react2.default.createElement("hr", null),
-=======
->>>>>>> 99aa2d373e8f0eb16614f1189e4d9071ae932a45
 					_react2.default.createElement(_source.TextField, null)
 				),
 				_react2.default.createElement(
@@ -12298,10 +12278,7 @@
 						null,
 						"Buttons"
 					),
-<<<<<<< HEAD
 					_react2.default.createElement("hr", null),
-=======
->>>>>>> 99aa2d373e8f0eb16614f1189e4d9071ae932a45
 					_react2.default.createElement(
 						_source.StackLayout,
 						{

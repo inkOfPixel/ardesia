@@ -24,6 +24,7 @@ body {
 	font-size: 14px;
 	letter-spacing: 0.04em;
 	color: rgb(51,51,51);
+	background-color: rgb(240,240,240);
 }
 
 h3 {
@@ -105,6 +106,11 @@ hr {
 
 .wrapper section .StackLayout div:first-child h4 {
 	padding-top: 0;
+}
+
+.wrapper section.stacklayout .StackLayout .box {
+	background-color: rgb(255,255,255);
+	height: 32px;
 }
 
 .footer {

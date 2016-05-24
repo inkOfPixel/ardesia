@@ -17,12 +17,12 @@ const App = ({ }) => (
 		<StackLayout
 			spacing="15px"
 		>
-			<section>
+			<section className="textfield">
 				<h3>TextField</h3>
 				<hr></hr>
 				<TextField />
 			</section>
-			<section>
+			<section className="buttons">
 				<h3>Buttons</h3>
 				<hr></hr>
 				<StackLayout
@@ -116,6 +116,41 @@ const App = ({ }) => (
 							>
 								Danger
 							</Button>
+						</StackLayout>
+					</div>
+				</StackLayout>
+			</section>
+			<section className="stacklayout">
+				<h3>StackLayout</h3>
+				<hr></hr>
+				<StackLayout
+					spacing="5px"
+				>
+					<div>
+						<h4>Vertical</h4>
+						<StackLayout
+							axis="vertical"
+							spacing="1px"
+							className="prova"
+						>
+							<div className="box"></div>
+							<div className="box"></div>
+							<div className="box"></div>
+							<div className="box"></div>
+							<div className="box"></div>
+						</StackLayout>
+					</div>
+					<div>
+						<h4>Horizontal</h4>
+						<StackLayout
+							axis="horizontal"
+							spacing="1px"
+						>
+							<div className="box"></div>
+							<div className="box"></div>
+							<div className="box"></div>
+							<div className="box"></div>
+							<div className="box"></div>
 						</StackLayout>
 					</div>
 				</StackLayout>

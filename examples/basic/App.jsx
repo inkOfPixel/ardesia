@@ -8,7 +8,8 @@ import {
 	TextField,
 	StackLayout,
 	Button,
-	CheckBox
+	CheckBox,
+	RichTextArea
 } from "../../source";
 
 class App extends Component {
@@ -41,7 +42,7 @@ class App extends Component {
 				<h3>Buttons</h3>
 				<StackLayout
 					axis="horizontal"
-					align="center"
+					align="end"
 					spacing="3px"
 				>
 					<Button
@@ -82,6 +83,8 @@ class App extends Component {
 					value={this.state.checkBoxValue}
 					onChange={event => this.onCheckBoxChange(event)}
 				/>
+
+				<RichTextArea />
 			</div>
 		);
 	}

@@ -10,8 +10,8 @@
     "prepublish": "npm run clean && npm run build",
     "gh-deploy": "./scripts/git-gh-deploy.sh website",
     "examples": "gulp serve:examples",
-	"build:website": "gulp build:website",
-	"website": "gulp serve:website"
+    "build:website": "gulp build:website",
+    "website": "gulp serve:website"
   },
   "repository": {
     "type": "git",
@@ -34,6 +34,7 @@
   "homepage": "https://github.com/inkOfPixel/ardesia#readme",
   "dependencies": {
     "d3": "^3.5.17",
+    "draft-js": "^0.7.0",
     "lodash": "^4.12.0",
     "radium": "^0.17.1",
     "react": "^15.0.2",

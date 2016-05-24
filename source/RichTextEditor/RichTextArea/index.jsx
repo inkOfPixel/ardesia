@@ -6,13 +6,20 @@
 import React, { PropTypes, Component } from "react";
 import {
 	Editor,
-	EditorState
+	EditorState,
+	convertFromRaw
 } from "draft-js";
 import RichText from "../RichText";
 
 class RichTextArea extends Component {
 	constructor(props) {
 		super(props);
+
+		const { value } = props;
+
+		this.state = {
+			editorState: createEditorState(value.raw)
+		};
 
 		this.focus = () => this.refs.editor.focus();
 		this.blur = () => this.refs.editor.blur();
@@ -40,12 +47,15 @@ class RichTextArea extends Component {
 
 	render() {
 		const { readOnly, placeholder } = this.props;
+		const state = this.state;
 		return (
 			<Editor
 				className="RichTextArea"
-				ref="editor"
+				editorState={state.editorState}
 				readOnly={readOnly}
 				placeholder={placeholder}
+				onChange={editorState => this.setState({ editorState })}
+				ref="editor"
 			/>
 		);
 	}
@@ -60,7 +70,13 @@ RichTextArea.propTypes = {
 
 RichTextArea.defaultProps = {
 	readOnly: false,
-	focus: false
+	focus: false,
+	value: RichText.createEmpty()
 };
+
+function createEditorState(raw) {
+	const contentState = convertFromRaw(raw);
+	return EditorState.createWithContent(contentState);
+}
 
 export default RichTextArea;

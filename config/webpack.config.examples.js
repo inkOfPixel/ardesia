@@ -3,7 +3,8 @@ const webpack = require("webpack");
 
 module.exports = {
 	entry: {
-		basic: ["./examples/basic/index.js"]
+		basic: ["./examples/basic/index.js"],
+		rte: ["./examples/rte/index.js"]
 	},
 	output: {
 		path: path.resolve(__dirname, "../examples/scripts"),

@@ -17,6 +17,10 @@ class RichText {
 		}
 	}
 
+	static createEmpty() {
+		return new RichText();
+	}
+
 	get raw() {
 		return this._raw;
 	}

@@ -4,3 +4,4 @@
 */
 
 export { default as RichTextArea } from "./RichTextArea";
+export { default as RichText } from "./RichText";

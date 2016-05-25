@@ -9,5 +9,6 @@ export { default as StackLayout } from "./StackLayout";
 export { default as TextField } from "./TextField";
 export {
 	RichTextArea,
-	RichText 
-} from "./RichTextEditor";
+	convertToRawObject,
+	convertFromRawObject
+} from "./RichText";

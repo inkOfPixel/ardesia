@@ -6,7 +6,8 @@
 import React, { PropTypes, Component } from "react";
 import {
 	Editor,
-	EditorState
+	EditorState,
+	RichUtils
 } from "draft-js";
 import Style from "./style";
 
@@ -24,39 +25,29 @@ class RichTextArea extends Component {
 		this.blur = () => this.refs.editor.blur();
 	}
 
-	componentDidMount() {
-		const { focus } = this.props;
-
-		if (focus) {
-			this.focus();
-		} else {
-			this.blur();
+	handleKeyCommand(command) {
+		const { editorState } = this.state;
+		const newEditorState = RichUtils.handleKeyCommand(editorState, command);
+		if (newEditorState) {
+			this.onChange(newEditorState);
+			return true;
 		}
-	}
-
-	componentWillReceiveProps(nextProps) {
-		const { focus } = nextProps;
-
-		if (focus) {
-			this.focus();
-		} else {
-			this.blur();
-		}
+		return false;
 	}
 
 	render() {
-		const { readOnly, placeholder } = this.props;
-		const state = this.state;
+		const { readOnly, placeholder, onChange, value } = this.props;
 		return (
 			<div
 				className="RichTextArea"
 				style={Style.base}
 			>
 				<Editor
-					editorState={state.editorState}
+					editorState={value}
 					readOnly={readOnly}
 					placeholder={placeholder}
-					onChange={editorState => this.setState({ editorState })}
+					onChange={onChange}
+					handleKeyCommand={command => this.handleKeyCommand(command)}
 					ref="editor"
 				/>
 			</div>
@@ -68,18 +59,16 @@ RichTextArea.propTypes = {
 	focus: PropTypes.bool,
 	readOnly: PropTypes.bool,
 	placeholder: PropTypes.string,
+	onChange: PropTypes.func,
+	handleKeyCommand: PropTypes.func,
 	value: PropTypes.instanceOf(EditorState)
 };
 
 RichTextArea.defaultProps = {
 	readOnly: false,
 	focus: false,
+	onChange: () => {},
 	value: EditorState.createEmpty()
 };
-
-// function createEditorState(raw) {
-// 	const contentState = convertFromRaw(raw);
-// 	return EditorState.createWithContent(contentState);
-// }
 
 export default RichTextArea;

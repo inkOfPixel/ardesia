@@ -5,4 +5,4 @@
 
 export { default as RichTextArea } from "./RichTextArea";
 export { convertToRawObject, convertFromRawObject } from "./utils";
-export { default as RichTextEditor } from "./RichTextEditor/";
+export { default as RichTextContainer } from "./RichTextContainer/";

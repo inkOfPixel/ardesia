@@ -6,7 +6,9 @@
 import React, {
 	Component,
 	PropTypes,
-	isValidElement
+	isValidElement,
+	Children,
+	cloneElement
 } from "react";
 import {
 	EditorState
@@ -22,13 +24,19 @@ class RichTextEditor extends Component {
 		this.state = {
 			editorState: props.value
 		};
+
+		this.onChange = editorState => this._onChange(editorState);
+	}
+
+	_onChange(editorState) {
+		this.setState({ editorState });
 	}
 
 	render() {
 		const { children } = this.props;
 		return (
 			<div className="RichTextEditor">
-				{children}
+				{renderChildren(this, this.state, this.props)}
 			</div>
 		);
 	}
@@ -48,12 +56,17 @@ RichTextEditor.propTypes = {
 	}
 };
 
+RichTextEditor.defaultProps = {
+	value: EditorState.createEmpty()
+};
+
 function getNumberOfRichTextArea(children) {
 	if (isValidElement(children)) {
-		if (children.type === RichTextArea) {
+		const element = children;
+		if (isRichTextArea(element)) {
 			return 1;
 		}
-		return getNumberOfRichTextArea(children.props.children);
+		return getNumberOfRichTextArea(element.props.children);
 	}
 	if (Array.isArray(children)) {
 		return children.reduce(sumTextAreaCount, 0);
@@ -63,6 +76,23 @@ function getNumberOfRichTextArea(children) {
 
 function sumTextAreaCount(previousCount, child) {
 	return previousCount + getNumberOfRichTextArea(child);
+}
+
+function isRichTextArea(element) {
+	return element.type === RichTextArea;
+}
+
+function renderChildren(parent, state, props) {
+	return Children.map(props.children, child => {
+		if (isValidElement(child)) {
+			if (isRichTextArea(child)) {
+				
+			}
+			const childChildren = renderChildren(parent, state, child.props);
+			return cloneElement(child, {}, childChildren);
+		}
+		return child;
+	});
 }
 
 export default RichTextEditor;

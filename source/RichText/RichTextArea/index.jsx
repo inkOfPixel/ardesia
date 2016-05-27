@@ -15,35 +15,29 @@ class RichTextArea extends Component {
 	constructor(props) {
 		super(props);
 
-		const { value } = props;
-
-		this.state = {
-			editorState: value
-		};
-
 		this.focus = () => this.refs.editor.focus();
 		this.blur = () => this.refs.editor.blur();
 	}
 
 	handleKeyCommand(command) {
-		const { editorState } = this.state;
+		const { editorState, onChange } = this.props;
 		const newEditorState = RichUtils.handleKeyCommand(editorState, command);
 		if (newEditorState) {
-			this.onChange(newEditorState);
+			onChange(newEditorState);
 			return true;
 		}
 		return false;
 	}
 
 	render() {
-		const { readOnly, placeholder, onChange, value } = this.props;
+		const { readOnly, placeholder, onChange, editorState } = this.props;
 		return (
 			<div
 				className="RichTextArea"
 				style={Style.base}
 			>
 				<Editor
-					editorState={value}
+					editorState={editorState}
 					readOnly={readOnly}
 					placeholder={placeholder}
 					onChange={onChange}
@@ -61,14 +55,14 @@ RichTextArea.propTypes = {
 	placeholder: PropTypes.string,
 	onChange: PropTypes.func,
 	handleKeyCommand: PropTypes.func,
-	value: PropTypes.instanceOf(EditorState)
+	editorState: PropTypes.instanceOf(EditorState)
 };
 
 RichTextArea.defaultProps = {
 	readOnly: false,
 	focus: false,
 	onChange: () => {},
-	value: EditorState.createEmpty()
+	editorState: EditorState.createEmpty()
 };
 
 export default RichTextArea;

@@ -10,6 +10,7 @@ export { default as TextField } from "./TextField";
 export {
 	RichTextArea,
 	RichTextContainer,
+	BoldButton,
 	convertToRawObject,
 	convertFromRawObject
 } from "./RichText";

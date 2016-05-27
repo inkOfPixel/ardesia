@@ -19,6 +19,10 @@ class RichTextArea extends Component {
 		this.blur = () => this.refs.editor.blur();
 	}
 
+	componentWillReceiveProps() {
+		this.focus();
+	}
+
 	handleKeyCommand(command) {
 		const { editorState, onChange } = this.props;
 		const newEditorState = RichUtils.handleKeyCommand(editorState, command);

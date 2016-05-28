@@ -12,6 +12,7 @@ export {
 	RichTextContainer,
 	BoldButton,
 	ItalicButton,
+	UnderlineButton,
 	convertToRawObject,
 	convertFromRawObject
 } from "./RichText";

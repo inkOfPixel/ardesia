@@ -8,3 +8,4 @@ export { convertToRawObject, convertFromRawObject } from "./utils";
 export { default as RichTextContainer } from "./RichTextContainer/";
 export { default as BoldButton } from "./BoldButton/";
 export { default as ItalicButton } from "./ItalicButton/";
+export { default as UnderlineButton } from "./UnderlineButton/";

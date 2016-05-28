@@ -13,14 +13,14 @@ import {
 } from "draft-js";
 import Style from "./style";
 
-const STYLE_NAME = "BOLD";
+const STYLE_NAME = "UNDERLINE";
 
-const BoldButton = ({ editorState, onChange }) => {
+const UnderlineButton = ({ editorState, onChange }) => {
 	const currentStyle = editorState.getCurrentInlineStyle();
 	const active = currentStyle.has(STYLE_NAME);
 	return (
 		<button
-			className="BoldButton"
+			className="UnderlineButton"
 			style={[
 				Style.base,
 				!active && Style.normal,
@@ -28,12 +28,12 @@ const BoldButton = ({ editorState, onChange }) => {
 			]}
 			onMouseDown={event => handleMouseDown({ event, editorState }, onChange)}
 		>
-			Bold
+			Underline
 		</button>
 	);
 };
 
-BoldButton.propTypes = {
+UnderlineButton.propTypes = {
 	editorState: PropTypes.instanceOf(EditorState),
 	onChange: PropTypes.func
 };
@@ -41,12 +41,12 @@ BoldButton.propTypes = {
 function handleMouseDown(context, callback) {
 	const { event, editorState } = context;
 	event.preventDefault();
-	const newEditorState = toggleBold(editorState);
+	const newEditorState = toggleUnderline(editorState);
 	callback(newEditorState);
 }
 
-function toggleBold(editorState) {
+function toggleUnderline(editorState) {
 	return RichUtils.toggleInlineStyle(editorState, STYLE_NAME);
 }
 
-export default radium(BoldButton);
+export default radium(UnderlineButton);

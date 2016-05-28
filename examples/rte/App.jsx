@@ -8,7 +8,8 @@ import {
 	RichTextArea,
 	RichTextContainer,
 	BoldButton,
-	ItalicButton
+	ItalicButton,
+	UnderlineButton
 } from "../../source";
 
 class App extends Component {
@@ -35,6 +36,7 @@ class App extends Component {
 				<RichTextContainer>
 					<BoldButton />
 					<ItalicButton />
+					<UnderlineButton />
 					<RichTextArea />
 				</RichTextContainer>
 			</div>

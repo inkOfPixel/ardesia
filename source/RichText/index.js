@@ -9,3 +9,4 @@ export { default as RichTextContainer } from "./RichTextContainer/";
 export { default as BoldButton } from "./BoldButton/";
 export { default as ItalicButton } from "./ItalicButton/";
 export { default as UnderlineButton } from "./UnderlineButton/";
+export { default as SelectionToolbar } from "./SelectionToolbar/";

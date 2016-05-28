@@ -9,7 +9,8 @@ import {
 	RichTextContainer,
 	BoldButton,
 	ItalicButton,
-	UnderlineButton
+	UnderlineButton,
+	SelectionToolbar
 } from "../../source";
 
 class App extends Component {
@@ -34,9 +35,11 @@ class App extends Component {
 			>
 				<h3>Rich Text Editor</h3>
 				<RichTextContainer>
-					<BoldButton />
-					<ItalicButton />
-					<UnderlineButton />
+					<SelectionToolbar>
+						<BoldButton />
+						<ItalicButton />
+						<UnderlineButton />
+					</SelectionToolbar>
 					<RichTextArea />
 				</RichTextContainer>
 			</div>

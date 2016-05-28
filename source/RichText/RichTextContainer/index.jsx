@@ -11,7 +11,8 @@ import React, {
 	PropTypes
 } from "react";
 import {
-	EditorState
+	EditorState,
+	getVisibleSelectionRect
 } from "draft-js";
 
 class RichTextContainer extends Component {
@@ -19,7 +20,8 @@ class RichTextContainer extends Component {
 		super(props);
 
 		this.state = {
-			editorState: props.editorState
+			editorState: props.editorState,
+			selectionBoundingRect: null
 		};
 
 		this.onChange = this.onChange.bind(this);
@@ -27,7 +29,10 @@ class RichTextContainer extends Component {
 
 	onChange(editorState) {
 		const { onChange } = this.props;
-		this.setState({ editorState }, () => {
+		this.setState({
+			editorState,
+			selectionBoundingRect: getVisibleSelectionRect(window)
+		}, () => {
 			if (onChange) {
 				onChange(editorState);
 			}
@@ -40,7 +45,8 @@ class RichTextContainer extends Component {
 				const childChildren = this.renderChildren(child.props.children);
 				const contextProps = {
 					editorState: this.state.editorState,
-					onChange: this.onChange
+					onChange: this.onChange,
+					selectionBoundingRect: this.state.selectionBoundingRect
 				};
 				return cloneElement(child, contextProps, childChildren);
 			}

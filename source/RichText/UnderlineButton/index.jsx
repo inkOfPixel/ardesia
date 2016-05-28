@@ -28,7 +28,7 @@ const UnderlineButton = ({ editorState, onChange }) => {
 			]}
 			onMouseDown={event => handleMouseDown({ event, editorState }, onChange)}
 		>
-			Underline
+			U
 		</button>
 	);
 };

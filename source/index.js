@@ -13,6 +13,7 @@ export {
 	BoldButton,
 	ItalicButton,
 	UnderlineButton,
+	SelectionToolbar,
 	convertToRawObject,
 	convertFromRawObject
 } from "./RichText";

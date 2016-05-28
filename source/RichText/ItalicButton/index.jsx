@@ -28,7 +28,7 @@ const ItalicButton = ({ editorState, onChange }) => {
 			]}
 			onMouseDown={event => handleMouseDown({ event, editorState }, onChange)}
 		>
-			Italic
+			I
 		</button>
 	);
 };

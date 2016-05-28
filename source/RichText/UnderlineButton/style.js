@@ -7,18 +7,21 @@ export default {
 	base: {
 		outline: "none",
 		border: "none",
-		background: "#eee",
-		padding: "10px",
+		padding: "12px 18px",
 		cursor: "pointer",
-		color: "#333",
-		":hover": {
-			background: "#ddd"
-		}
+		background: "none",
+		textDecoration: "underline"
 	},
 	normal: {
-
+		color: "#737373",
+		":hover": {
+			color: "#969696"
+		}
 	},
 	active: {
-		color: "blue"
+		color: "#4292c6",
+		":hover": {
+			color: "#4292c6"
+		}
 	}
 };

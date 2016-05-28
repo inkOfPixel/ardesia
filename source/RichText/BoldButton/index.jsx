@@ -28,7 +28,7 @@ const BoldButton = ({ editorState, onChange }) => {
 			]}
 			onMouseDown={event => handleMouseDown({ event, editorState }, onChange)}
 		>
-			Bold
+			B
 		</button>
 	);
 };

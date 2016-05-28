@@ -7,7 +7,8 @@ import React, { Component } from "react";
 import {
 	RichTextArea,
 	RichTextContainer,
-	BoldButton
+	BoldButton,
+	ItalicButton
 } from "../../source";
 
 class App extends Component {
@@ -33,6 +34,7 @@ class App extends Component {
 				<h3>Rich Text Editor</h3>
 				<RichTextContainer>
 					<BoldButton />
+					<ItalicButton />
 					<RichTextArea />
 				</RichTextContainer>
 			</div>

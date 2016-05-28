@@ -11,6 +11,7 @@ export {
 	RichTextArea,
 	RichTextContainer,
 	BoldButton,
+	ItalicButton,
 	convertToRawObject,
 	convertFromRawObject
 } from "./RichText";

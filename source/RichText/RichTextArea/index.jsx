@@ -9,7 +9,9 @@ import {
 	EditorState,
 	RichUtils
 } from "draft-js";
+import radium from "radium";
 import Style from "./style";
+import BlockWrapper from "./BlockWrapper";
 
 class RichTextArea extends Component {
 	constructor(props) {
@@ -30,7 +32,12 @@ class RichTextArea extends Component {
 	}
 
 	render() {
-		const { readOnly, placeholder, onChange, editorState } = this.props;
+		const {
+			readOnly,
+			placeholder,
+			onChange,
+			editorState
+		} = this.props;
 		return (
 			<div
 				className="RichTextArea"
@@ -42,6 +49,7 @@ class RichTextArea extends Component {
 					placeholder={placeholder}
 					onChange={onChange}
 					handleKeyCommand={command => this.handleKeyCommand(command)}
+					blockRendererFn={block => blockRenderer({ block })}
 					ref="editor"
 				/>
 			</div>
@@ -65,4 +73,12 @@ RichTextArea.defaultProps = {
 	editorState: EditorState.createEmpty()
 };
 
-export default RichTextArea;
+function blockRenderer(options) {
+	return {
+		component: BlockWrapper,
+		props: {
+		}
+	};
+}
+
+export default radium(RichTextArea);

@@ -14,6 +14,8 @@ export {
 	ItalicButton,
 	UnderlineButton,
 	SelectionToolbar,
+	H1Button,
+	BlockToolbar,
 	convertToRawObject,
 	convertFromRawObject
 } from "./RichText";

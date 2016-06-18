@@ -5,11 +5,9 @@
 
 export default {
 	base: {
-		background: "#eee"
-	},
-	block: {
-		":hover": {
-			background: "rgba(30, 30, 30, 0.1)"
-		}
+		background: "#252525",
+		position: "absolute",
+		top: "0px",
+		left: "0px"
 	}
 };

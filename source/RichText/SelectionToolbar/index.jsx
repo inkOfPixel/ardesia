@@ -24,7 +24,7 @@ class SelectionToolbar extends Component {
 				className="SelectionToolbar"
 				style={[
 					Style.base,
-					toggleToolbar(selectionBoundingRect, this.getNode())
+					getToolbarStyle(selectionBoundingRect, this.getNode())
 				]}
 				ref="selectionToolbar"
 			>
@@ -44,12 +44,16 @@ SelectionToolbar.propTypes = {
 	selectionBoundingRect: PropTypes.object
 };
 
-function toggleToolbar(selectionBounds, node) {
-	if (selectionBounds === null || node === undefined || selectionBounds.width === 0) {
-		return {
-			visibility: "hidden"
-		};
+function getToolbarStyle(selectionBounds, node) {
+	if (shouldShowToolbar(selectionBounds, node)) {
+		return getToolbarPositionStyle(selectionBounds, node);
 	}
+	return {
+		visibility: "hidden"
+	};
+}
+
+function getToolbarPositionStyle(selectionBounds, node) {
 	const { top, left, width } = selectionBounds;
 	const toolbarWidth = node.offsetWidth;
 	const toolbarHeight = node.offsetHeight;
@@ -60,6 +64,10 @@ function toggleToolbar(selectionBounds, node) {
 		top: top - toolbarHeight,
 		left: Math.max(0, Math.min(maxX, desiredX))
 	};
+}
+
+function shouldShowToolbar(selectionBounds, node) {
+	return selectionBounds !== null && node !== undefined && selectionBounds.width !== 0;
 }
 
 export default radium(SelectionToolbar);

@@ -10,7 +10,9 @@ import {
 	BoldButton,
 	ItalicButton,
 	UnderlineButton,
-	SelectionToolbar
+	SelectionToolbar,
+	H1Button,
+	BlockToolbar
 } from "../../source";
 
 class App extends Component {
@@ -40,7 +42,10 @@ class App extends Component {
 						<ItalicButton />
 						<UnderlineButton />
 					</SelectionToolbar>
+					<BlockToolbar>
+					</BlockToolbar>
 					<RichTextArea />
+					<H1Button />
 				</RichTextContainer>
 			</div>
 		);

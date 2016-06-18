@@ -21,17 +21,21 @@ class RichTextContainer extends Component {
 
 		this.state = {
 			editorState: props.editorState,
-			selectionBoundingRect: null
+			selectionBoundingRect: null,
+			selectedBlockElement: null
 		};
 
-		this.onChange = this.onChange.bind(this);
+		this.onChange = this
+			.onChange
+			.bind(this);
 	}
 
 	onChange(editorState) {
 		const { onChange } = this.props;
 		this.setState({
 			editorState,
-			selectionBoundingRect: getVisibleSelectionRect(window)
+			selectionBoundingRect: getVisibleSelectionRect(window),
+			selectedBlockElement: getSelectedBlockElement(window)
 		}, () => {
 			if (onChange) {
 				onChange(editorState);
@@ -46,7 +50,8 @@ class RichTextContainer extends Component {
 				const contextProps = {
 					editorState: this.state.editorState,
 					onChange: this.onChange,
-					selectionBoundingRect: this.state.selectionBoundingRect
+					selectionBoundingRect: this.state.selectionBoundingRect,
+					selectedBlockElement: this.state.selectedBlockElement
 				};
 				return cloneElement(child, contextProps, childChildren);
 			}
@@ -57,9 +62,7 @@ class RichTextContainer extends Component {
 	render() {
 		const { children } = this.props;
 		return (
-			<div
-				className="RichTextContainer"
-			>
+			<div className="RichTextContainer">
 				{this.renderChildren(children)}
 			</div>
 		);
@@ -69,9 +72,7 @@ class RichTextContainer extends Component {
 RichTextContainer.propTypes = {
 	editorState: PropTypes.instanceOf(EditorState),
 	children: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.element,
-		PropTypes.arrayOf(PropTypes.element)
+		PropTypes.string, PropTypes.element, PropTypes.arrayOf(PropTypes.element)
 	]),
 	onChange: PropTypes.func
 };
@@ -79,5 +80,24 @@ RichTextContainer.propTypes = {
 RichTextContainer.defaultProps = {
 	editorState: EditorState.createEmpty()
 };
+
+function getSelectedBlockElement(window) {
+	const selection = window.getSelection();
+	if (selection.rangeCount === 0) {
+		return null;
+	}
+	let node = selection.getRangeAt(0).startContainer;
+	while (node !== null) {
+		if (isBlockNode(node)) {
+			return node;
+		}
+		node = node.parentNode;
+	}
+	return null;
+}
+
+function isBlockNode(node) {
+	return typeof node.getAttribute === "function" && node.getAttribute("data-block") === "true";
+}
 
 export default RichTextContainer;

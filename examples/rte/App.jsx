@@ -12,6 +12,7 @@ import {
 	UnderlineButton,
 	SelectionToolbar,
 	H1Button,
+	NormalTextButton,
 	BlockToolbar
 } from "../../source";
 
@@ -43,9 +44,10 @@ class App extends Component {
 						<UnderlineButton />
 					</SelectionToolbar>
 					<BlockToolbar>
+						<H1Button>H1</H1Button>
+						<NormalTextButton>T</NormalTextButton>
 					</BlockToolbar>
 					<RichTextArea />
-					<H1Button />
 				</RichTextContainer>
 			</div>
 		);

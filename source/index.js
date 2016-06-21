@@ -15,7 +15,9 @@ export {
 	UnderlineButton,
 	SelectionToolbar,
 	H1Button,
+	NormalTextButton,
 	BlockToolbar,
 	convertToRawObject,
 	convertFromRawObject
 } from "./RichText";
+export { default as Toolbar } from "./Toolbar";

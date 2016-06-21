@@ -13,14 +13,14 @@ import {
 } from "draft-js";
 import Style from "./style";
 
-const BLOCK_TYPE = "header-one";
+const BLOCK_TYPE = "unstyled";
 
-const H1Button = ({ editorState, onChange, children, style }) => {
+const NormalTextButton = ({ editorState, onChange, children, style }) => {
 	const blockType = getBlockType(editorState);
 	const active = blockType === BLOCK_TYPE;
 	return (
 		<button
-			className="H1Button"
+			className="NormalTextButton"
 			style={[
 				Style.base,
 				!active && Style.normal,
@@ -34,7 +34,7 @@ const H1Button = ({ editorState, onChange, children, style }) => {
 	);
 };
 
-H1Button.propTypes = {
+NormalTextButton.propTypes = {
 	editorState: PropTypes.instanceOf(EditorState),
 	children: PropTypes.node,
 	onChange: PropTypes.func,
@@ -59,4 +59,4 @@ function toggleBlockType(editorState) {
 	return RichUtils.toggleBlockType(editorState, BLOCK_TYPE);
 }
 
-export default radium(H1Button);
+export default radium(NormalTextButton);

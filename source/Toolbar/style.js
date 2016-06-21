@@ -5,10 +5,18 @@
 
 export default {
 	base: {
-		background: "#252525",
+		position: "relative"
+	},
+	floating: {
 		position: "absolute"
 	},
-	menuItem: {
+	toolbarItem: {
+
+	},
+	horizontal: {
+		float: "left"
+	},
+	vertical: {
 		float: "left",
 		clear: "both"
 	}

@@ -11,4 +11,5 @@ export { default as ItalicButton } from "./ItalicButton/";
 export { default as UnderlineButton } from "./UnderlineButton/";
 export { default as SelectionToolbar } from "./SelectionToolbar/";
 export { default as H1Button } from "./H1Button/";
+export { default as NormalTextButton } from "./NormalTextButton/";
 export { default as BlockToolbar } from "./BlockToolbar/";

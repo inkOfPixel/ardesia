@@ -9,14 +9,16 @@ import radium from "radium";
 
 const Button = ({
 	children,
+	className,
 	type,
 	actionType,
 	size,
 	style,
-	onClick
+	onClick,
+	onMouseDown
 }) => (
 	<button
-		className="Button"
+		className={`Button ${className}`}
 		style={{
 			...Style.base,
 			...getStyle(type, actionType),
@@ -24,6 +26,7 @@ const Button = ({
 			...style
 		}}
 		onClick={onClick}
+		onMouseDown={onMouseDown}
 	>
 		{children}
 	</button>
@@ -44,12 +47,10 @@ Button.propTypes = {
 		"warning",
 		"danger"
 	]),
-	children: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.element,
-		PropTypes.arrayOf(PropTypes.element)
-	]),
+	children: PropTypes.node,
+	className: PropTypes.string,
 	onClick: PropTypes.func,
+	onMouseDown: PropTypes.func,
 	size: PropTypes.oneOf([
 		"extraSmall",
 		"small",
@@ -67,7 +68,8 @@ Button.propTypes = {
 Button.defaultProps = {
 	size: "normal",
 	type: "fill",
-	actionType: "primary"
+	actionType: "primary",
+	className: ""
 };
 
 export default radium(Button);

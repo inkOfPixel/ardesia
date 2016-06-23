@@ -3,33 +3,35 @@
 * All rights reserved.
 */
 
-import React, { PropTypes, Component, Children, cloneElement, isValidElement } from "react";
+import React, {
+	PropTypes,
+	Component,
+	Children,
+	cloneElement
+} from "react";
 import radium from "radium";
 import Style from "./style";
 import Toolbar from "../../Toolbar";
+import BlockControl from "../BlockControl";
+import { RichUtils, EditorState } from "draft-js";
 
 class BlockToolbar extends Component {
 	constructor(props) {
 		super(props);
-		this.node = null;
-	}
+		this.element = null;
 
-	renderChildren(children) {
-		return Children.map(children, child => {
-			if (isValidElement(child)) {
-				const childChildren = child.props.children;
-				const contextProps = {
-					style: Style.menuItem
-				};
-				return cloneElement(child, contextProps, childChildren);
-			}
-			return child;
-		});
+		this.state = {
+			menuVisible: false
+		};
+
+		this.handleRefChange = this.handleRefChange.bind(this);
+		this.getActiveControl = this.getActiveControl.bind(this);
+		this.handleShouldSetBlockType = this.handleShouldSetBlockType.bind(this);
+		this.handleOnBlockControlMouseDown = this.handleOnBlockControlMouseDown.bind(this);
 	}
 
 	render() {
-		const { selectedBlockElement, children } = this.props;
-		const { left, top } = getToolbarPosition(selectedBlockElement, this.node);
+		const { left, top } = this.toolbarPosition;
 		return (
 			<Toolbar
 				className="BlockToolbar"
@@ -37,57 +39,138 @@ class BlockToolbar extends Component {
 				floating
 				top={top}
 				left={left}
-				style={[
-					Style.base,
-					getToolbarStyle(selectedBlockElement, this.node)
-				]}
-				ref={node => { this.node = node; }}
+				style={this.toolbarStyle}
+				ref={this.handleRefChange}
 			>
-				{this.renderChildren(children)}
+				{this.renderChildren()}
 			</Toolbar>
 		);
 	}
 
+	get toolbarPosition() {
+		const { selectedBlockElement } = this.props;
+		if (selectedBlockElement && this.element) {
+			return {
+				left: this.blockBounds.left - this.toolbarBounds.width,
+				top: this.blockBounds.top
+			};
+		}
+		return {};
+	}
+
+	get blockBounds() {
+		const { selectedBlockElement } = this.props;
+		if (selectedBlockElement) {
+			return selectedBlockElement.getBoundingClientRect();
+		}
+		return {};
+	}
+
+	get toolbarBounds() {
+		if (this.element) {
+			return this.element.getBoundingClientRect();
+		}
+		return {};
+	}
+
+	get toolbarStyle() {
+		if (this.shouldShowToolbar()) {
+			return {
+				...Style.base,
+				...(this.state.menuVisible ? Style.visible : {})
+			};
+		}
+		return {
+			visibility: "hidden"
+		};
+	}
+
+	shouldShowToolbar() {
+		const { selectedBlockElement } = this.props;
+		return selectedBlockElement !== null && this.element !== null;
+	}
+
+	handleRefChange(component) {
+		if (component !== null) {
+			this.element = component.element;
+		} else {
+			this.element = null;
+		}
+	}
+
+	handleShouldSetBlockType() {
+		return this.state.menuVisible;
+	}
+
+	handleOnBlockControlMouseDown() {
+		this.setState({ menuVisible: !this.state.menuVisible });
+	}
+
+	renderChildren() {
+		const { menuVisible } = this.state;
+		if (menuVisible) {
+			return this.renderAllBlockControls();
+		}
+		return this.renderActiveBlockControl();
+	}
+
+	renderAllBlockControls() {
+		const { children } = this.props;
+		return Children.map(children, child => {
+			const childChildren = child.props.children;
+			const contextProps = {
+				style: {
+					...Style.blockControl
+				},
+				onMouseDown: this.handleOnBlockControlMouseDown
+			};
+			return cloneElement(child, contextProps, childChildren);
+		});
+	}
+
+	renderActiveBlockControl() {
+		const { children } = this.props;
+		const blockControls = Children.toArray(children);
+		const activeControl = blockControls.reduce(this.getActiveControl, null);
+		const activeControlChildren = activeControl.props.children;
+		const contextProps = {
+			style: {
+				...Style.blockControl,
+				...Style.menuNotVisibleActiveControl
+			},
+			shouldSetBlockType: this.handleShouldSetBlockType,
+			onMouseDown: this.handleOnBlockControlMouseDown
+		};
+		return cloneElement(activeControl, contextProps, activeControlChildren);
+	}
+
+	getActiveControl(activeControl, currentControl) {
+		const { editorState } = this.props;
+		const currentBlockType = RichUtils.getCurrentBlockType(editorState);
+		if (
+			!this.isBlockControl(activeControl) &&
+			this.isControlOfType(currentControl, currentBlockType)
+		) {
+			return currentControl;
+		}
+		return activeControl;
+	}
+
+	isBlockControl(object) {
+		return object instanceof BlockControl;
+	}
+
+	isControlOfType(control, type) {
+		return control.props.type === type;
+	}
 }
 
 BlockToolbar.propTypes = {
 	selectedBlockElement: PropTypes.object,
-	children: PropTypes.node
+	children: PropTypes.arrayOf(PropTypes.shape({
+		type: PropTypes.oneOf([BlockControl])
+	})),
+	editorState: PropTypes.instanceOf(EditorState)
 };
-
-function getToolbarPosition(currentBlock, toolbarNode) {
-	if (currentBlock && toolbarNode) {
-		console.log(toolbarNode);
-		const blockBounds = currentBlock.getBoundingClientRect();
-		const toolbarBounds = toolbarNode.getBoundingClientRect();
-		return {
-			left: blockBounds.left - toolbarBounds.width,
-			top: blockBounds.top
-		};
-	}
-	return {};
-}
-
-function getToolbarStyle(currentBlock, toolbarNode) {
-	if (shouldShowToolbar(currentBlock, toolbarNode)) {
-		return getToolbarPositionStyle(currentBlock, toolbarNode);
-	}
-	return {
-		visibility: "hidden"
-	};
-}
-
-function shouldShowToolbar(currentBlock, toolbarNode) {
-	return currentBlock !== null && toolbarNode !== null;
-}
-
-function getToolbarPositionStyle(currentBlock, toolbarNode) {
-	const { top, left } = currentBlock.getBoundingClientRect();
-	const toolbarBounds = toolbarNode.getBoundingClientRect();
-	return {
-		left: `${left - toolbarBounds.width}px`,
-		top: `${top}px`
-	};
-}
 
 export default radium(BlockToolbar);

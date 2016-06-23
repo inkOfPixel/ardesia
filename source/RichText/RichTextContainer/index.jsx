@@ -25,9 +25,7 @@ class RichTextContainer extends Component {
 			selectedBlockElement: null
 		};
 
-		this.onChange = this
-			.onChange
-			.bind(this);
+		this.onChange = this.onChange.bind(this);
 	}
 
 	onChange(editorState) {
@@ -49,7 +47,7 @@ class RichTextContainer extends Component {
 				const childChildren = this.renderChildren(child.props.children);
 				const contextProps = {
 					editorState: this.state.editorState,
-					onChange: this.onChange,
+					onEditorStateChange: this.onChange,
 					selectionBoundingRect: this.state.selectionBoundingRect,
 					selectedBlockElement: this.state.selectedBlockElement
 				};

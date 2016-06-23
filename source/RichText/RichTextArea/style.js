@@ -8,6 +8,7 @@ export default {
 		background: "#eee"
 	},
 	block: {
+		border: "1px solid #333",
 		":hover": {
 			background: "rgba(30, 30, 30, 0.1)"
 		}

@@ -31,6 +31,7 @@
 		"max-len": "warn",
 		"arrow-body-style": "warn",
 		"dot-notation": "off",
-		"no-param-reassign": "warn"
+		"no-param-reassign": "warn",
+		"react/sort-comp": "off"
 	}
 }

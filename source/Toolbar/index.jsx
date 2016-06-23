@@ -3,26 +3,35 @@
 * All rights reserved.
 */
 
-import React, { PropTypes, Children, cloneElement, isValidElement } from "react";
+import React, { PropTypes, Children, Component, cloneElement, isValidElement } from "react";
 import radium from "radium";
 import Style from "./style";
 
-const Toolbar = props => {
-	const { style, className, floating } = props;
-	return (
-		<div
-			className={`Toolbar ${className}`}
-			style={[
-				Style.base,
-				floating && Style.floating,
-				floating && getToolbarFloatingPositionStyle(props),
-				style
-			]}
-		>
-			{renderChildren(props)}
-		</div>
-	);
-};
+class Toolbar extends Component {
+
+	get element() {
+		return this._element;
+	}
+
+	render() {
+		const { style, className, floating, onMouseDown } = this.props;
+		return (
+			<div
+				className={`Toolbar ${className}`}
+				style={[
+					Style.base,
+					floating && Style.floating,
+					floating && getToolbarFloatingPositionStyle(this.props),
+					style
+				]}
+				onMouseDown={onMouseDown}
+				ref={element => { this._element = element; }}
+			>
+				{renderChildren(this.props)}
+			</div>
+		);
+	}
+}
 
 function getToolbarFloatingPositionStyle(props) {
 	const { left, top } = props;
@@ -44,7 +53,8 @@ function renderChild(child, props) {
 	const contextProps = {
 		style: {
 			...Style.toolbarItem,
-			...getItemAxisBasedStyle(props.axis)
+			...getItemAxisBasedStyle(props.axis),
+			...child.props.style
 		}
 	};
 	return cloneElement(child, contextProps, childChildren);
@@ -64,7 +74,8 @@ Toolbar.propTypes = {
 	style: PropTypes.object,
 	className: PropTypes.string,
 	left: PropTypes.number,
-	top: PropTypes.number
+	top: PropTypes.number,
+	onMouseDown: PropTypes.func
 };
 
 Toolbar.defaultProps = {

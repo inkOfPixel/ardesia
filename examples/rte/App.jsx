@@ -11,9 +11,9 @@ import {
 	ItalicButton,
 	UnderlineButton,
 	SelectionToolbar,
-	H1Button,
-	NormalTextButton,
-	BlockToolbar
+	BlockToolbar,
+	BlockControl,
+	Button
 } from "../../source";
 
 class App extends Component {
@@ -44,8 +44,8 @@ class App extends Component {
 						<UnderlineButton />
 					</SelectionToolbar>
 					<BlockToolbar>
-						<H1Button>H1</H1Button>
-						<NormalTextButton>T</NormalTextButton>
+						<BlockControl type="unstyled">T</BlockControl>
+						<BlockControl type="header-one">H1</BlockControl>
 					</BlockToolbar>
 					<RichTextArea />
 				</RichTextContainer>

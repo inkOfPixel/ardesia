@@ -19,13 +19,14 @@ class RichTextArea extends Component {
 
 		this.focus = () => this.refs.editor.focus();
 		this.blur = () => this.refs.editor.blur();
+		this.handleKeyCommand = this.handleKeyCommand.bind(this);
 	}
 
 	handleKeyCommand(command) {
-		const { editorState, onChange } = this.props;
+		const { editorState, onEditorStateChange } = this.props;
 		const newEditorState = RichUtils.handleKeyCommand(editorState, command);
 		if (newEditorState) {
-			onChange(newEditorState);
+			onEditorStateChange(newEditorState);
 			return true;
 		}
 		return false;
@@ -35,7 +36,7 @@ class RichTextArea extends Component {
 		const {
 			readOnly,
 			placeholder,
-			onChange,
+			onEditorStateChange,
 			editorState
 		} = this.props;
 		return (
@@ -47,8 +48,8 @@ class RichTextArea extends Component {
 					editorState={editorState}
 					readOnly={readOnly}
 					placeholder={placeholder}
-					onChange={onChange}
-					handleKeyCommand={command => this.handleKeyCommand(command)}
+					onChange={onEditorStateChange}
+					handleKeyCommand={this.handleKeyCommand}
 					blockRendererFn={block => blockRenderer({ block })}
 					ref="editor"
 				/>
@@ -61,7 +62,7 @@ RichTextArea.propTypes = {
 	focus: PropTypes.bool,
 	readOnly: PropTypes.bool,
 	placeholder: PropTypes.string,
-	onChange: PropTypes.func,
+	onEditorStateChange: PropTypes.func,
 	handleKeyCommand: PropTypes.func,
 	editorState: PropTypes.instanceOf(EditorState)
 };
@@ -77,6 +78,7 @@ function blockRenderer(options) {
 	return {
 		component: BlockWrapper,
 		props: {
+			style: Style.block
 		}
 	};
 }

@@ -5,11 +5,27 @@
 
 export default {
 	base: {
-		background: "#252525",
 		position: "absolute"
 	},
-	menuItem: {
-		float: "left",
-		clear: "both"
+	visible: {
+		background: "#252525"
+	},
+	collapsedToolbar: {
+		background: "none"
+	},
+	blockControl: {
+		background: "none",
+		":hover": {
+			background: "none"
+		}
+	},
+	notActiveControl: {
+		color: "#95a5a6"
+	},
+	menuNotVisibleActiveControl: {
+		color: "#95a5a6"
+	},
+	menuVisibleActiveControl: {
+		color: "#3498db"
 	}
 };

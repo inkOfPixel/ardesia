@@ -11,7 +11,10 @@ const BlockWrapper = radium((props) => {
 	return (
 		<div
 			className="BlockWrapper"
-			style={props.style}
+			style={{
+				...props.blockProps.style,
+				...props.style
+			}}
 			data-offset-key={props.offsetKey}
 		>
 			<EditorBlock {...props} />

@@ -11,7 +11,7 @@ export default {
 		position: "absolute"
 	},
 	toolbarItem: {
-
+		width: "100%"
 	},
 	horizontal: {
 		float: "left"

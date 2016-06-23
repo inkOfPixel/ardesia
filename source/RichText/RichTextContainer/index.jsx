@@ -85,6 +85,7 @@ function getSelectedBlockElement(window) {
 		return null;
 	}
 	let node = selection.getRangeAt(0).startContainer;
+	console.log("end node", node);
 	while (node !== null) {
 		if (isBlockNode(node)) {
 			return node;

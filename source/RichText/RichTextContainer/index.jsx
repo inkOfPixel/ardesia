@@ -26,6 +26,19 @@ class RichTextContainer extends Component {
 		};
 
 		this.onChange = this.onChange.bind(this);
+		this.handleSelectionChange = this.handleSelectionChange.bind(this);
+	}
+
+	componentDidMount() {
+		document.addEventListener("selectionchange", this.handleSelectionChange);
+	}
+
+	handleSelectionChange(event) {
+		console.log(event);
+		this.setState({
+			selectionBoundingRect: getVisibleSelectionRect(window),
+			selectedBlockElement: getSelectedBlockElement(window)
+		});
 	}
 
 	onChange(editorState) {
@@ -85,7 +98,6 @@ function getSelectedBlockElement(window) {
 		return null;
 	}
 	let node = selection.getRangeAt(0).startContainer;
-	console.log("end node", node);
 	while (node !== null) {
 		if (isBlockNode(node)) {
 			return node;

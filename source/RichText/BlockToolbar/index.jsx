@@ -28,6 +28,22 @@ class BlockToolbar extends Component {
 		this.getActiveControl = this.getActiveControl.bind(this);
 		this.handleShouldSetBlockType = this.handleShouldSetBlockType.bind(this);
 		this.handleOnBlockControlMouseDown = this.handleOnBlockControlMouseDown.bind(this);
+		this.handleToolbarMouseDown = this.handleToolbarMouseDown.bind(this);
+		this.handleGenericMouseDown = this.handleGenericMouseDown.bind(this);
+	}
+
+	componentDidMount() {
+		document.addEventListener("mousedown", this.handleGenericMouseDown);
+	}
+
+	handleGenericMouseDown() {
+		this.setState({ menuVisible: false });
+	}
+
+	handleToolbarMouseDown(event) {
+		event.preventDefault();
+		event.stopPropagation();
+		event.nativeEvent.stopImmediatePropagation();
 	}
 
 	render() {
@@ -40,6 +56,7 @@ class BlockToolbar extends Component {
 				top={top}
 				left={left}
 				style={this.toolbarStyle}
+				onMouseDown={this.handleToolbarMouseDown}
 				ref={this.handleRefChange}
 			>
 				{this.renderChildren()}

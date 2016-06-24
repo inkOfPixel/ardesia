@@ -8,9 +8,9 @@ export default {
 		background: "#eee"
 	},
 	block: {
-		border: "1px solid #333",
+		border: "1px dashed rgba(90, 90, 90, 0.0)",
 		":hover": {
-			background: "rgba(30, 30, 30, 0.1)"
+			border: "1px dashed rgba(90, 90, 90, 0.1)"
 		}
 	}
 };

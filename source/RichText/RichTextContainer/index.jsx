@@ -33,8 +33,7 @@ class RichTextContainer extends Component {
 		document.addEventListener("selectionchange", this.handleSelectionChange);
 	}
 
-	handleSelectionChange(event) {
-		console.log(event);
+	handleSelectionChange() {
 		this.setState({
 			selectionBoundingRect: getVisibleSelectionRect(window),
 			selectedBlockElement: getSelectedBlockElement(window)

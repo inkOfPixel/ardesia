@@ -7,13 +7,10 @@ import React, { Component } from "react";
 import {
 	RichTextArea,
 	RichTextContainer,
-	BoldButton,
-	ItalicButton,
-	UnderlineButton,
 	SelectionToolbar,
+	InlineControl,
 	BlockToolbar,
-	BlockControl,
-	Button
+	BlockControl
 } from "../../source";
 
 class App extends Component {
@@ -39,9 +36,15 @@ class App extends Component {
 				<h3>Rich Text Editor</h3>
 				<RichTextContainer>
 					<SelectionToolbar>
-						<BoldButton />
-						<ItalicButton />
-						<UnderlineButton />
+						<InlineControl textStyle="BOLD">
+							B
+						</InlineControl>
+						<InlineControl textStyle="ITALIC">
+							I
+						</InlineControl>
+						<InlineControl textStyle="UNDERLINE">
+							U
+						</InlineControl>
 					</SelectionToolbar>
 					<BlockToolbar>
 						<BlockControl type="unstyled">T</BlockControl>

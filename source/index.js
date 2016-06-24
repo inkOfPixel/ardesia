@@ -10,10 +10,8 @@ export { default as TextField } from "./TextField";
 export {
 	RichTextArea,
 	RichTextContainer,
-	BoldButton,
-	ItalicButton,
-	UnderlineButton,
 	SelectionToolbar,
+	InlineControl,
 	BlockToolbar,
 	BlockControl,
 	convertToRawObject,

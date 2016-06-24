@@ -9,8 +9,7 @@ export default {
 		border: "none",
 		padding: "12px 18px",
 		cursor: "pointer",
-		background: "none",
-		textDecoration: "underline"
+		background: "none"
 	},
 	normal: {
 		color: "#737373",
